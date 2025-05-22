@@ -1,0 +1,232 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        /* internal css kiya hai simple calculater kaliya*/
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(45deg, #df2a93, #75e7e0);
+        }
+
+        .calculator {
+            background: rgba(255, 255, 255, 0.164);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.281);
+            text-align: center;
+            width: 300px;
+        }
+
+        .input-field {
+            font-size: 20px;
+            margin-bottom: 20px;
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .button {
+            padding: 15px 20px;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 48%;
+            font-size: 20px;
+            display: flex;
+            text-align: center;
+        }
+
+        .mul {
+            background-color: rgb(105, 165, 77);
+            text-align: center;
+            padding-left: 5PX;
+        }
+
+        .sub {
+            background-color: rgb(199, 74, 126);
+        }
+
+        .sum {
+            background-color: rgb(113, 125, 233);
+        }
+
+        .div {
+            background-color: rgb(55, 182, 154);
+        }
+
+        .perc {
+            background-color: rgb(222, 149, 45);
+        }
+
+        .rem {
+            background-color: rgb(245, 105, 125);
+        }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .calculator h2 {
+            color: #fff8f8;
+            font-size: 30px;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            background-color: #fff8f8;
+          
+            padding: 15px 15px;
+            border-radius: 8px;
+            font-size: 20px;
+            color: rgba(0, 0, 0, 0.521);
+        }
+        .btn1{
+            display: flex;
+            gap: 15px;
+        }
+        .btn2{
+            display: flex;
+            gap: 15px;
+
+        }
+        .btn3{
+            display: flex;
+            gap: 15px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="calculator">
+        <h2 style="color: #df2a93;">Simple Calculator</h2>
+
+        <!-- Input fields for numbers -->
+        <input type="number" id="num1" class="input-field" placeholder="Enter first number" />
+        <input type="number" id="num2" class="input-field" placeholder="Enter second number" />
+
+        <!-- Button group for operations -->
+        <div class="btn-group">
+            <div class="btn1">
+            <button class="button sum" onclick="calculateSum()">Addition</button>
+            <button class="button sub" onclick="calculateSubtraction()">Subtraction</button>
+        </div>
+        <div class="btn2">
+            <button class="button mul" onclick="calculateMultiplication()">Multiplication</button>
+            <button class="button div" onclick="calculateDivision()">Division</button></div>
+            <div class="btn3">  <button class="button perc" onclick="calculatePercentage()">Percentage</button>
+        
+            <button class="button rem" onclick="calculateRemainder()">Remainder</button>
+        </div>
+
+        <!-- Result Display -->
+        <center>
+            <h3>Result: <span id="result">0</span></h3>
+        </center>
+    </div>
+
+    <script>
+        // Function to calculate the sum
+        function calculateSum() {
+            let num1 = parseFloat(document.getElementById('num1').value);
+            let num2 = parseFloat(document.getElementById('num2').value);
+
+            if (!isNaN(num1) && !isNaN(num2)) {
+                let sum = num1 + num2;
+                document.getElementById('result').textContent = sum;
+            } else {
+                alert("Please enter valid numbers in both fields.");
+            }
+        }
+
+        // Function to calculate subtraction
+        function calculateSubtraction() {
+            let num1 = parseFloat(document.getElementById('num1').value);
+            let num2 = parseFloat(document.getElementById('num2').value);
+
+            if (!isNaN(num1) && !isNaN(num2)) {
+                let sub = num1 - num2;
+                document.getElementById('result').textContent = sub;
+            } else {
+                alert("Please enter valid numbers in both fields.");
+            }
+        }
+
+        // Function to calculate multiplication
+        function calculateMultiplication() {
+            let num1 = parseFloat(document.getElementById('num1').value);
+            let num2 = parseFloat(document.getElementById('num2').value);
+
+            if (!isNaN(num1) && !isNaN(num2)) {
+                let multiply = num1 * num2;
+                document.getElementById('result').textContent = multiply;
+            } else {
+                alert("Please enter valid numbers in both fields.");
+            }
+        }
+
+        // Function to calculate division
+        function calculateDivision() {
+            let num1 = parseFloat(document.getElementById('num1').value);
+            let num2 = parseFloat(document.getElementById('num2').value);
+
+            if (!isNaN(num1) && !isNaN(num2)) {
+                if (num2 !== 0) {
+                    let divide = num1 / num2;
+                    document.getElementById('result').textContent = divide;
+                } else {
+                    alert("Cannot divide by zero.");
+                }
+            } else {
+                alert("Please enter valid numbers in both fields.");
+            }
+        }
+
+        // Function to calculate percentage
+        function calculatePercentage() {
+            let num1 = parseFloat(document.getElementById('num1').value);
+            let num2 = parseFloat(document.getElementById('num2').value);
+
+            if (!isNaN(num1) && !isNaN(num2)) {
+                let percentage = (num1 / num2) * 100;
+                document.getElementById('result').textContent = percentage + "%";
+            } else {
+                alert("Please enter valid numbers in both fields.");
+            }
+        }
+
+        // Function to calculate remainder
+        function calculateRemainder() {
+            let num1 = parseFloat(document.getElementById('num1').value);
+            let num2 = parseFloat(document.getElementById('num2').value);
+
+            if (!isNaN(num1) && !isNaN(num2)) {
+                let remainder = num1 % num2;
+                document.getElementById('result').textContent = remainder;
+            } else {
+                alert("Please enter valid numbers in both fields.");
+            }
+        }
+    </script>
+
+</body>
+</html>
